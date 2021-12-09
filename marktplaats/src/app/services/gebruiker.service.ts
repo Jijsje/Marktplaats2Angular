@@ -9,7 +9,7 @@ export class GebruikerService {
   constructor(private http: HttpClient) {
   }
 
-  private url = serverUrl + '/gebruikers/';
+  private url = serverUrl + '/gebruikers';
   private gebruikerSubject = new Subject<Gebruiker[]>();
 
   add(gebruiker: Gebruiker) {
@@ -21,8 +21,8 @@ export class GebruikerService {
   getGebruikers(): Observable<Gebruiker[]> {
     this.http.get<Gebruiker[]>(this.url)
       .subscribe(
-        contacts => {
-          this.gebruikerSubject.next(contacts);
+        gebruikers => {
+          this.gebruikerSubject.next(gebruikers);
         });
     return this.gebruikerSubject;
   }
