@@ -1,0 +1,18 @@
+<h2>Register</h2>
+<form (submit)="registreren()" novalidate #f="ngForm" >
+  <div>
+    <label for="username">Username </label>
+    <input type="text" id="username" name="username" [(ngModel)]="gebruiker.username" required>
+  </div>
+  <div>
+    <label for="emailadres">E-mailadres </label>
+    <input type="text" id="emailadres" name="emailadres" [(ngModel)]="gebruiker.emailadres" required>
+  </div>
+  <div>
+    <button [disabled]="f.invalid" >
+     Registreren
+    </button>
+    <a routerLink="/login" class="btn btn-link">Cancel</a>
+
+  </div>
+</form>
