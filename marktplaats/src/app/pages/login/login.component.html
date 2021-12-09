@@ -1,0 +1,17 @@
+<h2>Log in</h2>
+<form (submit)="login()" novalidate #f="ngForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="gebruiker.username" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="gebruiker.password" required>
+  </div>
+  <div>
+    <button [disabled]="f.invalid">
+      Login </button>
+    <a routerLink="/registratie" class="btn btn-link">Registratie</a>
+  </div>
+</form>
+<!--<p>{{message$ | async}}</p>-->
