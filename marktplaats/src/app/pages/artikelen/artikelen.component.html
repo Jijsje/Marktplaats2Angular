@@ -1,0 +1,36 @@
+<h1>Overzicht van alle artikelen</h1>
+
+<!--<button (click)="getArtikelen()">Haal artikelen op</button>-->
+
+<!--<select>-->
+<!--  <option [value]="artikelen" *ngFor="let item of artikelen">{{item}}</option>-->
+<!--</select>-->
+
+<br><br>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Titel</th>
+    <th>Verkoper</th>
+  </tr>
+  </thead>
+  <tbody>
+<!--  <tr>-->
+  <tr *ngFor="let item of artikelen">
+    <td>
+      <label>{{item.id}}</label>
+<!--      <input type="text" [(ngModel)]="item.id">-->
+    </td>
+    <td>
+      <label>{{item.titel}}</label>
+<!--      <input type="text" [(ngModel)]="item.titel">-->
+    </td>
+    <td>
+      <label>{{item.verkoper}}</label>
+<!--      <input type="text" [(ngModel)]="item.verkoper">-->
+    </td>
+  </tr>
+  </tbody>
+</table>
+
