@@ -12,6 +12,14 @@
     <label for="adres">Adres </label>
     <input type="text" id="adres" name="adres" formControlName="adres" class="form-control">
     </div>
+  <div>
+    <label for="bezorgwijze">Bezorgwijze </label>
+    <select id="bezorgwijze" name="bezorgwijze" formControlName="bezorgwijze" class="form-control">
+      <option *ngFor="let bw of bezorgwijzes"
+              [value]="bw"> {{bw}}
+      </option>
+    </select>
+  </div>
 <div>
     <button type="submit" [disabled]="!registerForm.valid" >
      Registreren
