@@ -17,6 +17,15 @@ export class GebruikerService {
       .subscribe(() => this.getGebruikers())  // when posted: getAll (refresh)
   }
 
+  update(c: Gebruiker, id: number): void {
+    this.http.put<Gebruiker[]>(`${this.url}/${id}`, c) // put contact to server
+      .subscribe(() => this.getGebruikers());  // when posted: getAll (refresh)
+  }
+
+  get(id: number): Observable<Gebruiker> {
+    return this.http.get<Gebruiker>(`${this.url}/${id}`);
+  }
+
   getGebruikers(): Observable<Gebruiker[]> {
     this.http.get<Gebruiker[]>(this.url)
       .subscribe(

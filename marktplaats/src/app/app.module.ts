@@ -32,11 +32,11 @@ import {CommonModule} from "@angular/common";
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'registratie', component: RegistratieComponent},
-      {path: 'details', component: GebruikerDetailsComponent}
+      {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]}
 
     ]),
     MatFormFieldModule,
