@@ -23,7 +23,6 @@ export class AuthenticationService {
     this.http.post<Gebruiker>(`${this.uri}/login2`, gebruiker, {observe: 'response'} /* = to receive the full httpresponse instead of only the body */)
       .subscribe(
         data => {
-          console.log("returned from backend");
           // get the body from the response:
           this.loggedInUser = data.body;
 
@@ -36,7 +35,6 @@ export class AuthenticationService {
           // or get a header from the response:
           const token = data.headers.get('Authorization')?.substr(7);
           localStorage.setItem('token', JSON.stringify(token));
-          console.log(token);
         },
         error => {
           console.log(error);
