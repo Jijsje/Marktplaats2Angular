@@ -13,6 +13,9 @@ import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {NavbarComponent} from "./components/navbar/navbar.component";
+import {GebruikerDetailsComponent } from './pages/gebruiker-details/gebruiker-details.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,18 +23,23 @@ import {MatSelectModule} from "@angular/material/select";
     HomeComponent,
     LoginComponent,
     RegistratieComponent,
+    NavbarComponent,
+    GebruikerDetailsComponent,
     ArtikelenComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'registratie', component: RegistratieComponent},
-      {path: 'artikelen', component: ArtikelenComponent},
+      {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
+      {path: 'artikelen', component: ArtikelenComponent}
 
     ]),
     MatFormFieldModule,

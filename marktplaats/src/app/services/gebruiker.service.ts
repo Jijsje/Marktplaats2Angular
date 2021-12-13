@@ -9,20 +9,28 @@ export class GebruikerService {
   constructor(private http: HttpClient) {
   }
 
-  private url = serverUrl + '/gebruikers/';
+  private url = serverUrl + '/gebruikers';
   private gebruikerSubject = new Subject<Gebruiker[]>();
 
   add(gebruiker: Gebruiker) {
-    console.log("posting something");
-    return this.http.post<Gebruiker>(this.url, gebruiker)
-      .subscribe(() => this.getGebruikers())
+    return this.http.post<Gebruiker>(`${this.url}/register`, gebruiker) // post contact to server
+      .subscribe(() => this.getGebruikers())  // when posted: getAll (refresh)
+  }
+
+  update(c: Gebruiker, id: number): void {
+    this.http.put<Gebruiker[]>(`${this.url}/${id}`, c) // put contact to server
+      .subscribe(() => this.getGebruikers());  // when posted: getAll (refresh)
+  }
+
+  get(id: number): Observable<Gebruiker> {
+    return this.http.get<Gebruiker>(`${this.url}/${id}`);
   }
 
   getGebruikers(): Observable<Gebruiker[]> {
     this.http.get<Gebruiker[]>(this.url)
       .subscribe(
-        contacts => {
-          this.gebruikerSubject.next(contacts);
+        gebruikers => {
+          this.gebruikerSubject.next(gebruikers);
         });
     return this.gebruikerSubject;
   }

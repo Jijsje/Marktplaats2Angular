@@ -1,7 +1,8 @@
 export interface Gebruiker {
-  id: number;
+  id?: number;
   username: string;
-  emailadres: string;
-  password: string;
-  token: string;
+  emailadres?: string;
+  adres?: string;
+  wachtwoord?: string;
+  token?: string;
 }
