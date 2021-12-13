@@ -20,7 +20,7 @@ export class ArtikelenComponent implements OnInit {
       id: 20,
       username: "Marley",
       emailadres: "marley@mail.com",
-      password: "geheim",
+      wachtwoord: "geheim",
       token: "12"
     };
 
