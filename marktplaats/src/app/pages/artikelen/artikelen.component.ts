@@ -43,4 +43,18 @@ export class ArtikelenComponent implements OnInit {
       .subscribe(a => artikelSubject$.next(a));
     artikelSubject$.forEach(a => a.forEach(b => this.artikelen.push(b)));
   }
+
+  getArtikel(artikelId: number): void { // later
+    let artikelSubject$ = new Subject<Artikel[]>();
+    this.http.get<Artikel[]>(`${serverUrl}/artikelen/${artikelId}`)
+      .subscribe(a => artikelSubject$.next(a));
+    artikelSubject$.forEach(a => a.forEach(b => this.artikelen.push(b)));
+  }
+
+  getEigenArtikelen(userId: number): void { // queryparameter meegeven zoals: ?userId=99
+    let artikelSubject$ = new Subject<Artikel[]>();
+    this.http.get<Artikel[]>(`${serverUrl}/artikelen/?userId=${userId}`)
+      .subscribe(a => artikelSubject$.next(a));
+    artikelSubject$.forEach(a => a.forEach(b => this.artikelen.push(b)));
+  }
 }
