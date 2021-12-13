@@ -12,23 +12,31 @@ import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {NavbarComponent} from "./components/navbar/navbar.component";
+import {GebruikerDetailsComponent } from './pages/gebruiker-details/gebruiker-details.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegistratieComponent
+    RegistratieComponent,
+    NavbarComponent,
+    GebruikerDetailsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: '', component: HomeComponent},
+      {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'registratie', component: RegistratieComponent},
+      {path: 'details', component: GebruikerDetailsComponent}
 
     ]),
     MatFormFieldModule,

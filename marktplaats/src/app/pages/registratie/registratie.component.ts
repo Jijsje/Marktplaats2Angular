@@ -12,13 +12,13 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class RegistratieComponent implements OnInit {
   registerForm!: FormGroup;
   loading = false;
-  @Input() gebruiker!: Gebruiker;
+  gebruiker!: Gebruiker;
   // gebruiker = {} as Gebruiker;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: GebruikerService,
-    private router: Router,) {
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -30,6 +30,7 @@ export class RegistratieComponent implements OnInit {
   }
 
   registreren(): void {
+    console.log("Registering someone");
     this.service.add(this.registerForm.value)
     this.registerForm.reset();
     this.router.navigate(['/login'])

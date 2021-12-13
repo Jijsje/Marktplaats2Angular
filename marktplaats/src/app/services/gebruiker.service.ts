@@ -13,9 +13,8 @@ export class GebruikerService {
   private gebruikerSubject = new Subject<Gebruiker[]>();
 
   add(gebruiker: Gebruiker) {
-    console.log("posting something");
-    return this.http.post<Gebruiker>(this.url, gebruiker)
-      .subscribe(() => this.getGebruikers())
+    return this.http.post<Gebruiker>(`${this.url}/register`, gebruiker) // post contact to server
+      .subscribe(() => this.getGebruikers())  // when posted: getAll (refresh)
   }
 
   getGebruikers(): Observable<Gebruiker[]> {
