@@ -1,30 +1,32 @@
-<h2>Register</h2>
-<form (ngSubmit)="registreren()"  [formGroup]="registerForm">
-  <div>
-    <label for="username">Username </label>
-    <input type="text" id="username" name="username" formControlName="username" class="form-control">
-  </div>
-  <div>
-    <label for="emailadres">E-mailadres </label>
-    <input type="text" id="emailadres" name="emailadres" formControlName="emailadres" class="form-control">
-  </div>
-  <div>
-    <label for="adres">Adres </label>
-    <input type="text" id="adres" name="adres" formControlName="adres" class="form-control">
+<div class="container">
+  <h2>Register</h2>
+  <form (ngSubmit)="registreren()" [formGroup]="registerForm">
+    <div inputgroup>
+      <label for="username">Username </label>
+      <input type="text" id="username" name="username" formControlName="username" class="form-control">
     </div>
-  <div>
-    <label for="bezorgwijze">Bezorgwijze </label>
-    <select id="bezorgwijze" name="bezorgwijze" formControlName="bezorgwijze" class="form-control">
-      <option *ngFor="let bw of bezorgwijzes"
-              [value]="bw"> {{bw}}
-      </option>
-    </select>
-  </div>
-<div>
-    <button type="submit" [disabled]="!registerForm.valid" >
-     Registreren
-    </button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
+    <div>
+      <label for="emailadres">E-mailadres </label>
+      <input type="text" id="emailadres" name="emailadres" formControlName="emailadres" class="form-control">
+    </div>
+    <div>
+      <label for="adres">Adres </label>
+      <input type="text" id="adres" name="adres" formControlName="adres" class="form-control">
+    </div>
+    <div>
+      <label for="bezorgwijze">Bezorgwijze </label>
+      <select id="bezorgwijze" name="bezorgwijze" formControlName="bezorgwijze" class="form-control">
+        <option *ngFor="let bw of bezorgwijzes"
+                [value]="bw"> {{bw}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!registerForm.valid">
+        Registreren
+      </button>
+      <a routerLink="/login" class="btn btn-link">Cancel</a>
 
-  </div>
-</form>
+    </div>
+  </form>
+</div>

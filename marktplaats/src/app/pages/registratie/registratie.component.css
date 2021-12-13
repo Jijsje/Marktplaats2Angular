@@ -1,0 +1,9 @@
+.container {
+  justify-content: center;
+  align-items: center;
+}
+input {width: 300px;
+}
+select {width: 300px;
+}
+
