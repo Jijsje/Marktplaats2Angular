@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './pages/home/home.component';
 import {LoginComponent} from './pages/login/login.component';
 import {RegistratieComponent} from './pages/registratie/registratie.component';
+import {ArtikelenComponent} from "./pages/artikelen/artikelen.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from "./utils/jwt.interceptor";
 import {AuthGuard} from "./utils/auth.guard";
@@ -23,7 +24,8 @@ import {CommonModule} from "@angular/common";
     LoginComponent,
     RegistratieComponent,
     NavbarComponent,
-    GebruikerDetailsComponent
+    GebruikerDetailsComponent,
+    ArtikelenComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import {CommonModule} from "@angular/common";
       {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'registratie', component: RegistratieComponent},
-      {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]}
+      {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
+      {path: 'artikelen', component: ArtikelenComponent}
 
     ]),
     MatFormFieldModule,
