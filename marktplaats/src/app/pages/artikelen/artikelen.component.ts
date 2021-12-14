@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {serverUrl} from "../../../environments/environment";
 import {Artikel} from "../../model/artikel";
-import {Observable, Subject, Subscription} from "rxjs";
-import {Gebruiker} from "../../model/gebruiker";
-import {Router} from "@angular/router";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-artikelen',
@@ -13,32 +11,13 @@ import {Router} from "@angular/router";
 })
 export class ArtikelenComponent implements OnInit {
 
-  public verkoper: Gebruiker
-  public artikelen: Artikel[];
+  artikelen: Artikel[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.verkoper = {
-      id: 20,
-      username: "Marley",
-      emailadres: "marley@mail.com",
-      wachtwoord: "geheim",
-      token: "12"
-    };
-
-    this.artikelen = [
-      {id:1, titel:"Boter", verkoper:this.verkoper.username},
-      {id:2, titel:"Kaas", verkoper:this.verkoper.username},
-      {id:3, titel:"Eieren", verkoper:this.verkoper.username},
-      {id:4, titel:"Hagelslag", verkoper:this.verkoper.username}
-    ];
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    console.log("ngOnInit aangeroepen")
     this.getArtikelen();
   }
-
-  // TODO: van de verkoper moet alleen de username worden weergegeven
 
   getArtikelen(): void {
     let artikelSubject$ = new Subject<Artikel[]>();
