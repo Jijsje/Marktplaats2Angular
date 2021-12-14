@@ -16,6 +16,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {GebruikerDetailsComponent } from './pages/gebruiker-details/gebruiker-details.component';
 import {CommonModule} from "@angular/common";
+import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikelen-toevoegen.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {CommonModule} from "@angular/common";
     RegistratieComponent,
     NavbarComponent,
     GebruikerDetailsComponent,
-    ArtikelenComponent
+    ArtikelenComponent,
+    ArtikelenToevoegenComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {CommonModule} from "@angular/common";
       {path: 'login', component: LoginComponent},
       {path: 'registratie', component: RegistratieComponent},
       {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
-      {path: 'artikelen', component: ArtikelenComponent}
+      {path: 'artikelen', component: ArtikelenComponent},
+      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent, canActivate: [AuthGuard]}
 
     ]),
     MatFormFieldModule,
