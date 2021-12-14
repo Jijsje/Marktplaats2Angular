@@ -1,19 +1,8 @@
 <app-navbar></app-navbar>
 
 <br>
-<h1>Overzicht van alle artikelen</h1>
+<h2>Mijn Aanbod</h2>
 
-Vul een zoekterm in:
-<input type="text" #zoekterm>
-<button (click)="getArtikelenByQuery(zoekterm.value)">Zoek artikelen</button>
-
-<br>
-
-<!--<select>-->
-<!--  <option [value]="artikelen" *ngFor="let item of artikelen">{{item}}</option>-->
-<!--</select>-->
-
-<br><br>
 <table>
   <thead>
   <tr>
@@ -24,6 +13,7 @@ Vul een zoekterm in:
   </tr>
   </thead>
   <tbody>
+  <!--  <tr>-->
   <tr *ngFor="let item of artikelen">
     <td>
       <label>{{item.id}}</label>
@@ -41,3 +31,4 @@ Vul een zoekterm in:
   </tbody>
 </table>
 
+<!--<button routerLink="/artikelen">Ga terug</button>-->
