@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Artikel toevoegen</h2>
+  <form (ngSubmit)="toevoegen()" [formGroup]="toevoegenForm">
+    <div inputgroup>
+      <label for="titel">Titel </label>
+      <input type="text" id="titel" name="titel" formControlName="titel" class="form-control">
+    </div>
+    <div inputgroup>
+      <label for="beschrijving">Beschrijving </label>
+      <input type="text" id="beschrijving" name="beschrijving" formControlName="beschrijving" class="form-control">
+    </div>
+    <div inputgroup>
+      <label for="prijs">Prijs </label>
+      <input type="number" min="1" step="any" id="prijs" name="prijs" formControlName="prijs" class="form-control">
+    </div>
+    <div>
+      <label for="bezorgwijze">Bezorgwijze </label>
+      <select id="bezorgwijze" name="bezorgwijze" formControlName="bezorgwijze" class="form-control">
+        <option *ngFor="let bw of bezorgwijzes"
+                [value]="bw"> {{bw}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!toevoegenForm.valid">
+        Toevoegen
+      </button>
+    </div>
+  </form>
+</div>
+
