@@ -4,6 +4,7 @@ import {serverUrl} from "../../../environments/environment";
 import {Artikel} from "../../model/artikel";
 import {Observable, Subject, Subscription} from "rxjs";
 import {Gebruiker} from "../../model/gebruiker";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-artikelen',
@@ -15,12 +16,12 @@ export class ArtikelenComponent implements OnInit {
   public verkoper: Gebruiker
   public artikelen: Artikel[];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.verkoper = {
       id: 20,
       username: "Marley",
       emailadres: "marley@mail.com",
-      password: "geheim",
+      wachtwoord: "geheim",
       token: "12"
     };
 
@@ -37,6 +38,8 @@ export class ArtikelenComponent implements OnInit {
     this.getArtikelen();
   }
 
+  // TODO: van de verkoper moet alleen de username worden weergegeven
+
   getArtikelen(): void {
     let artikelSubject$ = new Subject<Artikel[]>();
     this.http.get<Artikel[]>(`${serverUrl}/artikelen`)
@@ -44,14 +47,16 @@ export class ArtikelenComponent implements OnInit {
     artikelSubject$.forEach(a => a.forEach(b => this.artikelen.push(b)));
   }
 
-  getArtikel(artikelId: number): void { // later
+  getArtikelenByQuery(query: string): void {
+    this.artikelen.length = 0;
     let artikelSubject$ = new Subject<Artikel[]>();
-    this.http.get<Artikel[]>(`${serverUrl}/artikelen/${artikelId}`)
+    this.http.get<Artikel[]>(`${serverUrl}/artikelen/?q=${query}`)
       .subscribe(a => artikelSubject$.next(a));
     artikelSubject$.forEach(a => a.forEach(b => this.artikelen.push(b)));
   }
 
-  getEigenArtikelen(userId: number): void { // queryparameter meegeven zoals: ?userId=99
+  getEigenArtikelen(userId: number): void { // later gebruiken
+    this.artikelen.length = 0;
     let artikelSubject$ = new Subject<Artikel[]>();
     this.http.get<Artikel[]>(`${serverUrl}/artikelen/?userId=${userId}`)
       .subscribe(a => artikelSubject$.next(a));

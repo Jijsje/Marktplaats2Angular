@@ -1,6 +1,14 @@
 <h1>Overzicht van alle artikelen</h1>
 
-<button (click)="getEigenArtikelen(1)">Haal eigen artikelen op</button>
+Vul een zoekterm in:
+<input type="text" #zoekterm>
+<button (click)="getArtikelenByQuery(zoekterm.value)">Zoek artikelen</button>
+
+<br>
+<!--Dit moet op een andere pagina komen-->
+<!--Vul een userID in:-->
+<!--<input type="number" #userId>-->
+<!--<button (click)="getEigenArtikelen(userId.valueAsNumber)">Bekijk alle artikelen van deze gebruiker</button>-->
 
 <!--<select>-->
 <!--  <option [value]="artikelen" *ngFor="let item of artikelen">{{item}}</option>-->
@@ -13,6 +21,7 @@
     <th>ID</th>
     <th>Titel</th>
     <th>Verkoper</th>
+    <th>Bekijken</th>
   </tr>
   </thead>
   <tbody>
@@ -20,15 +29,18 @@
   <tr *ngFor="let item of artikelen">
     <td>
       <label>{{item.id}}</label>
-<!--      <input type="text" [(ngModel)]="item.id">-->
+      <!--      <input type="text" [(ngModel)]="item.id">-->
     </td>
     <td>
       <label>{{item.titel}}</label>
 <!--      <input type="text" [(ngModel)]="item.titel">-->
     </td>
     <td>
-      <label>{{item.verkoper}}</label>
+      <label>{{item.verkoper}}</label> <!-- alleen username weergeven -->
 <!--      <input type="text" [(ngModel)]="item.verkoper">-->
+    </td>
+    <td>
+      <a routerLink="/artikel/{{item.id}}" class="btn btn-link">Bekijken</a>
     </td>
   </tr>
   </tbody>
