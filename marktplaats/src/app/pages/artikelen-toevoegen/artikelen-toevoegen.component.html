@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>Artikel toevoegen</h2>
+  <form (ngSubmit)="toevoegen()" [formGroup]="toevoegenForm">
+    <div inputgroup>
+      <label for="titel">Titel </label>
+      <input type="text" id="titel" name="titel" formControlName="titel" class="form-control">
+    </div>
+    <div inputgroup>
+      <label for="beschrijving">Beschrijving </label>
+      <input type="text" id="beschrijving" name="beschrijving" formControlName="beschrijving" class="form-control">
+    </div>
+    <div inputgroup>
+      <label for="prijs">Prijs </label>
+      <input type="number" min="1" step="any" id="prijs" name="prijs" formControlName="prijs" class="form-control">
+    </div>
+    <div>
+      <label for="bezorgwijze">Bezorgwijze </label>
+      <select id="bezorgwijze" name="bezorgwijze" formControlName="bezorgwijze" class="form-control">
+        <option *ngFor="let bw of bezorgwijzes"
+                [value]="bw"> {{bw}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="categorie">Categorie </label>
+      <select class="form-control" id="categorie" name="categorie" #cat (change)="selectCategorie(cat.value)">
+        <option *ngFor="let c of categorieen"
+                [value]="c"> {{c}}
+        </option>
+      </select>
+    </div>
+<!--    <div>-->
+    <div *ngIf="selectedCategorie === 'Dienst'">
+      <label for="dienstCategorie">Sub-categorie </label>
+      <select id="dienstCategorie" name="dienstCategorie" formControlName="dienstCategorie" class="form-control" >
+        <option *ngFor="let d of diensten"
+                [ngValue]="d"> {{d.naam}}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="selectedCategorie === 'Product'">
+<!--    <div>-->
+      <label for="productCategorie">Sub-categorie </label>
+      <select id="productCategorie" name="productCategorie" formControlName="productCategorie" class="form-control" >
+        <option *ngFor="let p of producten"
+                [ngValue]="p"> {{p.naam}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!toevoegenForm.valid">
+        Toevoegen
+      </button>
+    </div>
+  </form>
+</div>
+

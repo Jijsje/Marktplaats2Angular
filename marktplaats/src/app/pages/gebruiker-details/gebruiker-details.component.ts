@@ -14,7 +14,6 @@ export class GebruikerDetailsComponent implements OnInit {
 
   gebruikerJsonObj : any = JSON.parse(<string>localStorage.getItem("loggedInUser"));
   gebruiker: Gebruiker = <Gebruiker>this.gebruikerJsonObj;
-
   // @ts-ignore
   id = this.gebruiker.id|null;
 
@@ -46,6 +45,6 @@ export class GebruikerDetailsComponent implements OnInit {
     this.gebruiker.adres = this.gebruikerForm.value.adres
     this.gebruiker.token = "";
     this.service.update(this.gebruiker, this.id);
-    // this.router.navigate(['/contacts']);
+    localStorage.setItem('loggedInUser', JSON.stringify(this.gebruiker));
   }
 }

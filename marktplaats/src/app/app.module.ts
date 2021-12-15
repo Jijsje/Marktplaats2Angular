@@ -18,6 +18,7 @@ import {GebruikerDetailsComponent } from './pages/gebruiker-details/gebruiker-de
 import {ArtikelDetailsComponent } from './pages/artikel-details/artikel-details.component';
 import {MijnAanbodComponent } from './pages/mijn-aanbod/mijn-aanbod.component';
 import {CommonModule} from "@angular/common";
+import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikelen-toevoegen.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import {CommonModule} from "@angular/common";
     RegistratieComponent,
     NavbarComponent,
     GebruikerDetailsComponent,
-    ArtikelDetailsComponent,
     ArtikelenComponent,
+    ArtikelenToevoegenComponent
+    ArtikelDetailsComponent,
     MijnAanbodComponent
   ],
   imports: [
@@ -44,6 +46,7 @@ import {CommonModule} from "@angular/common";
       {path: 'registratie', component: RegistratieComponent},
       {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
       {path: 'artikelen', component: ArtikelenComponent},
+      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent},
       {path: 'artikelen/:id', component: ArtikelDetailsComponent},
       {path: 'mijn-aanbod', component: MijnAanbodComponent}
     ]),
