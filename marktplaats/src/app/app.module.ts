@@ -42,7 +42,7 @@ import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikel
       {path: 'registratie', component: RegistratieComponent},
       {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
       {path: 'artikelen', component: ArtikelenComponent},
-      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent, canActivate: [AuthGuard]}
+      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent}
 
     ]),
     MatFormFieldModule,
