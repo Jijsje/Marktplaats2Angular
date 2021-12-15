@@ -9,5 +9,3 @@ export interface Artikel {
   bezorgwijze: Bezorgwijze;
   verkoper: Gebruiker;
 }
-
-

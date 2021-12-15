@@ -15,6 +15,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {GebruikerDetailsComponent } from './pages/gebruiker-details/gebruiker-details.component';
+import {ArtikelDetailsComponent } from './pages/artikel-details/artikel-details.component';
+import {MijnAanbodComponent } from './pages/mijn-aanbod/mijn-aanbod.component';
 import {CommonModule} from "@angular/common";
 import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikelen-toevoegen.component';
 
@@ -28,6 +30,8 @@ import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikel
     GebruikerDetailsComponent,
     ArtikelenComponent,
     ArtikelenToevoegenComponent
+    ArtikelDetailsComponent,
+    MijnAanbodComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +46,9 @@ import { ArtikelenToevoegenComponent } from './pages/artikelen-toevoegen/artikel
       {path: 'registratie', component: RegistratieComponent},
       {path: 'details', component: GebruikerDetailsComponent, canActivate: [AuthGuard]},
       {path: 'artikelen', component: ArtikelenComponent},
-      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent}
-
+      {path: 'artikel-toevoegen', component: ArtikelenToevoegenComponent},
+      {path: 'artikelen/:id', component: ArtikelDetailsComponent},
+      {path: 'mijn-aanbod', component: MijnAanbodComponent}
     ]),
     MatFormFieldModule,
     MatSelectModule
